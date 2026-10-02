@@ -1,113 +1,136 @@
-# QA E2E Lab — Cypress + TypeScript + Playwright
+# QA E2E Lab
 
-Mali projekat za obnavljanje Cypress-a i TypeScript-a, uz paralelno poređenje sa Playwright-om.
+A hands-on end-to-end test automation project built with **Cypress** and **TypeScript**.
 
-## Šta je unutra
+The goal of this repository is to practice and reinforce core test automation concepts through a small local web application and progressively build a clean, maintainable Cypress test suite.
 
-- mala Vite + TypeScript aplikacija
-- login ekran
-- jednostavna lista taskova
-- Cypress E2E testovi
-- isti login scenario u Playwright-u
-- fixture koji ćemo koristiti u sledećoj lekciji
+## Tech Stack
 
-## Preduslovi
+- **Cypress**
+- **TypeScript**
+- **Vite**
+- **HTML / CSS**
+- **Git & GitHub**
 
-Koristi Node.js 22.x, 24.x ili 26.x+ zbog Cypress 16 zahteva.
+## Project Goals
 
-Proveri:
+This project focuses on practical E2E automation fundamentals, including:
+
+- Writing and organizing Cypress tests
+- Working with stable selectors
+- Cypress command chaining
+- Assertions and automatic retry behavior
+- Positive and negative test scenarios
+- Test isolation
+- Cypress hooks such as `beforeEach`
+- Aliases
+- Fixtures and test data
+- Custom commands
+- Network interception with `cy.intercept()`
+- API testing with Cypress
+- Improving test structure and maintainability
+- Practicing TypeScript in a real automation project
+
+The project is intentionally kept small so that the focus stays on **test automation concepts rather than application complexity**.
+
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have a recent Node.js version installed.
+
+Check your installation with:
 
 ```bash
 node -v
 npm -v
 ```
 
-## Instalacija
+This project uses **Node.js 24** during development.
+
+### Install dependencies
+
+Clone the repository and install dependencies:
 
 ```bash
+git clone <https://github.com/visekrunamilica/qa-e2e-lab>
+cd qa-e2e-lab
 npm install
-npx playwright install
 ```
 
-## Pokreni aplikaciju
+## Run the Application
+
+Start the local development server:
 
 ```bash
 npm run dev
 ```
 
-Otvori:
+The application should be available at:
 
 ```text
 http://localhost:5173
 ```
 
-Demo nalog:
+Test credentials:
 
 ```text
-email: qa@example.com
-password: cypress123
+Email: qa@example.com
+Password: cypress123
 ```
 
-## Cypress
+Keep the development server running while executing the Cypress tests.
 
-Dok aplikacija radi u jednom terminalu:
+## Run Cypress
+
+Open Cypress in interactive mode:
 
 ```bash
 npm run cy:open
 ```
 
-ili headless:
+Choose **E2E Testing**, select an available browser, and run the desired spec.
+
+Tests can also be executed from the command line with:
 
 ```bash
-npm run cy:run
+npx cypress run
 ```
 
-Počni od:
 
-```text
-cypress/e2e/01-login.cy.ts
-```
+## Testing Approach
 
-## Playwright
+Tests are written with a few important principles in mind:
 
-Playwright sam pokreće Vite dev server preko `webServer` podešavanja:
+- Tests should be independent from one another.
+- Each test should start from a known application state.
+- Stable `data-*` attributes are preferred over styling-based selectors.
+- Hard waits such as `cy.wait(3000)` should be avoided when Cypress retry behavior can be used instead.
+- Assertions should validate meaningful user-visible behavior.
+- Reusable abstractions should be introduced only when they make tests easier to understand and maintain.
 
-```bash
-npm run pw:test
-```
+## Roadmap
 
-UI mode:
+As the project grows, the test suite will cover:
 
-```bash
-npm run pw:ui
-```
+- Fixtures and typed test data
+- Form validation
+- Custom Cypress commands
+- Reusable helper functions
+- API requests with `cy.request()`
+- Network interception and mocking with `cy.intercept()`
+- Loading and error states
+- Task management scenarios
+- More advanced TypeScript usage
+- Test refactoring and maintainable project structure
 
-Počni od:
+## Why This Project Exists
 
-```text
-playwright/tests/01-login.spec.ts
-```
+This repository is a practical sandbox for strengthening Cypress and TypeScript skills through incremental, real-world automation exercises.
 
-## Lesson 01 — šta gledamo prvo
+Rather than starting with a large automation framework, the project grows step by step—from basic selectors and assertions to reusable test architecture, API testing, and network control.
 
-1. `src/main.ts` — osnovni TypeScript: `type`, `interface`, union tipovi, generički `querySelector`.
-2. `cypress/e2e/01-login.cy.ts` — `describe`, `it`, `cy.visit`, `cy.get`, `type`, `click`, `should`.
-3. `playwright/tests/01-login.spec.ts` — isti test sa `async/await`, `page` i `expect`.
-4. Poređenje Cypress command chain-a sa Playwright Promise/async modelom.
+## Author
 
-## Sledeće lekcije
-
-Planirano je da na istom projektu dodamo:
-
-- Cypress fixtures
-- `beforeEach`
-- custom commands
-- TypeScript modele
-- API pozive
-- `cy.intercept()`
-- aliases i `cy.wait()`
-- negative login scenario
-- Page Object primer, ali tek kada vidimo zašto nam treba
-- Playwright fixtures i `page.route()`
-
-Nemoj unapred refaktorisati projekat. Namerno je jednostavan da bismo videli osnove pre apstrakcija.
+Created as a hands-on QA automation learning and practice project.
