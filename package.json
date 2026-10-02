@@ -1,0 +1,26 @@
+{
+  "name": "qa-e2e-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "pw:test": "playwright test",
+    "pw:ui": "playwright test --ui",
+    "pw:headed": "playwright test --headed",
+    "typecheck:cypress": "tsc -p cypress/tsconfig.json --noEmit",
+    "typecheck:playwright": "tsc -p playwright/tsconfig.json --noEmit",
+    "typecheck": "npm run typecheck:app && npm run typecheck:cypress && npm run typecheck:playwright",
+    "typecheck:app": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.3",
+    "cypress": "16.1.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.1"
+  }
+}
